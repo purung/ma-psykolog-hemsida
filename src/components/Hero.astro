@@ -1,0 +1,46 @@
+---
+import Cloud from "./cloud.astro";
+---
+
+<section
+    class="w-full min-h-[100svh] bg-gradient-to-t from-primary to-accent smol-stack-layout overflow-hidden"
+>
+    <div
+        class="place-self-center blur-sm flex-col lg:flex-row smol-flexbox-grid justify-evenly w-[80%] h-[80%] lg:max-w-[60%] lg:max-h-[60%]"
+    >
+        <Cloud class="scale-[400%] z-20" />
+        <Cloud class="scale-[300%] z-10" />
+        <Cloud class="scale-[300%] z-20" />
+        <Cloud class="scale-[300%] z-20" />
+        <Cloud class="scale-[400%] z-20" />
+        <Cloud class="scale-[350%] z-10" />
+        <Cloud class="scale-[300%] z-40" />
+        <Cloud class="scale-[300%] z-20" />
+        <Cloud class="scale-[300%] z-10" />
+        <Cloud class="scale-[400%] z-20" />
+    </div>
+    <div
+        class="flex self-stretch flex-col flex-grow justify-between place-self-start lg:place-self-center z-50 m-12"
+    >
+        <div>
+            <h2
+                class="text-xl lg:text-3xl font-serif font-semibold text-secondary"
+            >
+                Samtal som <p class="italic w-[9ch]">lindrar och förändrar</p>
+            </h2>
+            <p
+                class="text-teal-900 dark:text-secondary text-md my-6 max-w-[45ch]"
+            >
+                Privat psykoterapi med affektfokuserad inriktning i centrala
+                Borås med leg psykolog Maria Andersson.
+            </p>
+        </div>
+        <div class="flex lg:justify-end">
+            <a
+                href="/tider"
+                class="btn btn-outline w-full lg:w-fit hover:btn-active hover:text-primary btn-secondary text-right"
+                >Boka en tid</a
+            >
+        </div>
+    </div>
+</section>

@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="sv">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -25,5 +25,43 @@ const { title } = Astro.props;
 	<body>
 		<slot />
 	</body>
+	<footer class="footer bg-accent min-h-[25vh] text-base-100">
+		<aside class="py-24 px-12">
+			<h4 class="footer-title">Leg psykolog Maria Andersson</h4>
+			<ul>
+				<li>Innehar f-skatt.</li>
+				<li>Medlem i Psykologföretagarna</li>
+				<li>Certifierad ISTDP-terapeut</li>
+			</ul>
+		</aside>
+	</footer>
 </html>
-<style is:global></style>
+<style is:global>
+	.smol-stack-layout {
+		display: grid;
+		grid-template-areas: "stack";
+		/* Set within the HTML for the demo */
+		aspect-ratio: var(--stack-aspect-ratio);
+	}
+
+	.smol-stack-layout > * {
+		grid-area: stack;
+	}
+	.smol-flexbox-grid {
+		--min: 15vmax;
+		--gap: -1rem;
+
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--gap);
+	}
+
+	.smol-flexbox-grid > * {
+		flex: 1 1 var(--min);
+	}
+</style>
+
+<script>
+	import Intersect from "../util/intersection";
+	Intersect();
+</script>

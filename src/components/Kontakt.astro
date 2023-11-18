@@ -1,0 +1,91 @@
+---
+
+---
+
+<section class="w-full bg-base-100 pb-40">
+    <div class="w-full md:w-2/3 lg:w-8/10 lg:h-6/8 px-6 py-12 mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-3xl text-accent mb-12 font-serif">Kontakt</h3>
+                <p class="mb-6 text-primary text-xl max-w-[40ch]">
+                    Vill du veta mer om vad jag erbjuder eller boka en tid?
+                </p>
+                <p class="mb-6 text-primary text-xl max-w-[40ch]">
+                    Fyll i dina uppgifter så ringer jag upp dig så snart jag
+                    kan, vanligen senast nästa vardag.
+                </p>
+            </div>
+            <form
+                action="https://tider.psykologandersson.se/boka"
+                method="post"
+                class="flex flex-col justify-evenly max-w-sm self-stretch gap-4 border border-primary rounded-xl p-4"
+            >
+                <h4 class="text-lg text-primary">Ring upp mig</h4>
+                <div class="form-control">
+                    <label class="label">Namn</label>
+                    <input
+                        name="name"
+                        inputmode="text"
+                        autocapitalize="words"
+                        autocomplete="name"
+                        required
+                        class="input input-bordered input-primary w-full"
+                    />
+                </div>
+                <div class="form-control">
+                    <label class="label">Telefonnummer</label>
+                    <input
+                        name="tel"
+                        inputmode="tel"
+                        autocomplete="tel"
+                        required
+                        class="input input-bordered input-primary w-full"
+                    />
+                </div>
+                <div class="form-control">
+                    <label class="label">Önskemål</label>
+                    <input
+                        name="special"
+                        inputmode="text"
+                        autocapitalize="words"
+                        autocomplete="name"
+                        class="input input-bordered input-primary w-full"
+                    />
+                    <label class="label text-alt text-xs"
+                        >Här kan du skriva om det finns någon särskild tid som
+                        du inte kan svara i telefon</label
+                    >
+                </div>
+                <div class="form-control">
+                    <label
+                        class="label cursor-pointer flex justify-start gap-4 content-center"
+                    >
+                        <input
+                            type="checkbox"
+                            class="checkbox checkbox-primary text-base-100"
+                            required
+                        />
+                        <span class="label-text text-sm"
+                            >Jag godkänner att dessa uppgifter hanteras enligt
+                            min integritetspolicy</span
+                        >
+                    </label>
+                </div>
+                <div
+                    class="form-control text-primary text-xs underline hover:text-accent"
+                >
+                    <a href="/integritetspolicy">Läs integritetspolicy</a>
+                </div>
+                <div class="form-control grow">
+                    <button
+                        class="btn btn-primary text-neutral-100 hover:btn-outline"
+                        type="submit"
+                        ><span>Skicka</span>
+                        <span class="hidden loading loading-dots loading-sm"
+                        ></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
