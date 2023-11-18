@@ -1,0 +1,10 @@
+.reveal {
+    opacity: 1;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(0);
+}
+
+.pre-reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+}
