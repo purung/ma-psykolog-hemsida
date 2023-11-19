@@ -20,7 +20,7 @@ import Cloud from "./cloud.astro";
         <Cloud class="scale-[400%] z-20" />
     </div>
     <div
-        class="flex self-stretch flex-col flex-grow justify-between place-self-start lg:place-self-center z-50 m-12"
+        class="flex flex-col self-stretch flex-grow justify-between place-self-start lg:place-self-center z-50 m-12"
     >
         <div>
             <h2
@@ -43,4 +43,9 @@ import Cloud from "./cloud.astro";
             >
         </div>
     </div>
+    <style>
+        .smol-flexbox-grid > * {
+            flex: 1 1 var(--min);
+        }
+    </style>
 </section>
