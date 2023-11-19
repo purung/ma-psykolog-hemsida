@@ -6,7 +6,7 @@ import Cloud from "./cloud.astro";
     class="w-full h-[100svh] bg-gradient-to-t from-primary to-accent smol-stack-layout overflow-hidden"
 >
     <div
-        class="place-self-center blur-sm flex-col lg:flex-row smol-flexbox-grid justify-evenly w-[80%] h-[80%] lg:max-w-[60%] lg:max-h-[60%]"
+        class="place-self-center grid grid-cols-3 grid-rows-4 md:grid-rows-3 md:grid-cols-4 w-[80%] h-[80%] lg:max-w-[60%] lg:max-h-[60%]"
     >
         <Cloud class="scale-[400%] z-20" />
         <Cloud class="scale-[300%] z-10" />
@@ -17,6 +17,8 @@ import Cloud from "./cloud.astro";
         <Cloud class="scale-[300%] z-40" />
         <Cloud class="scale-[300%] z-20" />
         <Cloud class="scale-[300%] z-10" />
+        <Cloud class="scale-[200%] z-20" />
+        <Cloud class="scale-[300%] z-20" />
         <Cloud class="scale-[400%] z-20" />
     </div>
     <div
