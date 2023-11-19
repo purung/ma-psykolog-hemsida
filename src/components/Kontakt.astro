@@ -2,7 +2,91 @@
 
 ---
 
-<section class="w-full bg-base-100 pb-40">
+<script>
+    function interceptForm() {
+        console.log("Kör ");
+        const theForm = document.getElementById(
+            "kontaktformulär",
+        ) as HTMLFormElement;
+        const knappText = document.getElementById("skicka");
+        const knappLaddar = document.getElementById("laddar");
+        const ruta = document.getElementById(
+            "serverFeedback",
+        ) as HTMLDialogElement;
+        const lyckades = document.getElementById("lyckades");
+        const misslyckades = document.getElementById("misslyckades");
+
+        theForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            theForm.querySelectorAll("input").forEach((el) => {
+                el.toggleAttribute("disabled");
+            });
+            knappText.classList.add("hidden");
+            knappLaddar.classList.add("visible");
+            knappLaddar.classList.remove("hidden");
+
+            const data = new FormData(theForm);
+            // fetch("https://tider.psykologandersson.se/boka", {
+            //     method: "POST",
+            //     body: data,
+            // });
+
+            ruta.showModal();
+        });
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        interceptForm();
+    });
+</script>
+<section id="kontakt" class="w-full bg-base-100 pb-40">
+    <dialog id="serverFeedback" class="modal bg-transparent">
+        <div class="modal-box bg-transparent shadow-none border-none">
+            <div
+                id="lyckades"
+                role="alert"
+                class="alert bg-primary text-base-100 border-none"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="stroke-current shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path></svg
+                >
+                <span>Du kommer att bli uppringd så snart som möjligt.</span>
+            </div>
+            <div
+                id="misslyckades"
+                role="alert"
+                class="hidden alert alert-error"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="stroke-current shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path></svg
+                >
+                <span>Någonting har gått fel. Var god försök igen.</span>
+            </div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn btn-primary text-base-100">Ok</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
     <div class="w-full md:w-2/3 lg:w-8/10 lg:h-6/8 px-6 py-12 mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
@@ -19,6 +103,7 @@
                 action="https://tider.psykologandersson.se/boka"
                 method="post"
                 class="flex flex-col justify-evenly max-w-sm self-stretch gap-4 border border-primary rounded-xl p-4"
+                id="kontaktformulär"
             >
                 <h4 class="text-lg text-primary">Ring upp mig</h4>
                 <div class="form-control">
@@ -80,8 +165,11 @@
                     <button
                         class="btn btn-primary text-neutral-100 hover:btn-outline"
                         type="submit"
-                        ><span>Skicka</span>
-                        <span class="hidden loading loading-dots loading-sm"
+                        id="skickaKnapp"
+                        ><span id="skicka">Skicka</span>
+                        <span
+                            id="laddar"
+                            class="hidden loading loading-dots loading-sm"
                         ></span>
                     </button>
                 </div>
