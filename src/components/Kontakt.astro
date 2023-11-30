@@ -26,14 +26,31 @@
             knappLaddar.classList.remove("hidden");
 
             const data = new FormData(theForm);
+            const urlEncodedData = new URLSearchParams();
+
+            for (const [key, value] of data) {
+                if (typeof value === "string") {
+                    urlEncodedData.append(key, value);
+                }
+            }
+
             fetch("https://birds-psy.fly.dev/api/boka", {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
                 method: "POST",
-                body: data,
+                body: urlEncodedData,
             })
-                .then((r) => ruta.showModal())
+                .then((r) => {
+                    if (!r.ok) {
+                        lyckades.classList.add("hidden");
+                        misslyckades.classList.remove("hidden");
+                    }
+
+                    ruta.showModal();
+                })
                 .catch((r) => {
-                    lyckades.classList.add("hidden");
-                    misslyckades.classList.remove("hidden");
+                    console.warn("Failed!");
                 });
         });
     }
