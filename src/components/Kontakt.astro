@@ -4,9 +4,8 @@
 
 <script>
     function interceptForm() {
-        console.log("Kör ");
         const theForm = document.getElementById(
-            "kontaktformulär",
+            "contactForm",
         ) as HTMLFormElement;
         const knappText = document.getElementById("skicka");
         const knappLaddar = document.getElementById("laddar");
@@ -18,12 +17,6 @@
 
         theForm.addEventListener("submit", (event) => {
             event.preventDefault();
-            theForm.querySelectorAll("input").forEach((el) => {
-                el.toggleAttribute("disabled");
-            });
-            knappText.classList.add("hidden");
-            knappLaddar.classList.add("visible");
-            knappLaddar.classList.remove("hidden");
 
             const data = new FormData(theForm);
             const urlEncodedData = new URLSearchParams();
@@ -31,8 +24,18 @@
             for (const [key, value] of data) {
                 if (typeof value === "string") {
                     urlEncodedData.append(key, value);
+                } else {
+                    console.log("A wild file appeared");
                 }
             }
+
+            theForm.querySelectorAll("input").forEach((el) => {
+                el.toggleAttribute("disabled");
+            });
+
+            knappText.classList.add("hidden");
+            knappLaddar.classList.add("visible");
+            knappLaddar.classList.remove("hidden");
 
             fetch("https://birds-psy.fly.dev/api/boka", {
                 headers: {
@@ -126,7 +129,7 @@
                 action="https://birds-psy.fly.dev/api/boka"
                 method="post"
                 class="flex flex-col justify-evenly max-w-sm self-stretch gap-4 border border-primary rounded-xl p-4"
-                id="kontaktformulär"
+                id="contactForm"
             >
                 <h4 class="text-lg text-primary">Ring upp mig</h4>
                 <div class="form-control">
