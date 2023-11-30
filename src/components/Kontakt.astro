@@ -26,12 +26,15 @@
             knappLaddar.classList.remove("hidden");
 
             const data = new FormData(theForm);
-            // fetch("https://birds-psy.fly.dev/api/boka", {
-            //     method: "POST",
-            //     body: data,
-            // });
-
-            ruta.showModal();
+            fetch("https://birds-psy.fly.dev/api/boka", {
+                method: "POST",
+                body: data,
+            })
+                .then((r) => ruta.showModal())
+                .catch((r) => {
+                    lyckades.classList.add("hidden");
+                    misslyckades.classList.remove("hidden");
+                });
         });
     }
     document.addEventListener("DOMContentLoaded", () => {
@@ -162,7 +165,9 @@
                 <div
                     class="form-control text-primary text-xs underline hover:text-accent"
                 >
-                    <a href="/integritetspolicy">Läs integritetspolicy</a>
+                    <a href="/personuppgifter" target="_blank"
+                        >Läs integritetspolicy</a
+                    >
                 </div>
                 <div class="form-control grow">
                     <button
