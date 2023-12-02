@@ -1,16 +1,17 @@
 ---
 interface Props {
 	title: string;
+	description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="sv">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +21,7 @@ const { title } = Astro.props;
 			rel="stylesheet"
 		/>
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{title} &ndash; leg psykolog Maria Andersson</title>
 	</head>
 	<body>
 		<slot />
@@ -34,6 +35,15 @@ const { title } = Astro.props;
 				<li>Certifierad ISTDP-terapeut</li>
 			</ul>
 		</aside>
+		<div class="place-self-start p-12 md:place-self-center">
+			<h4 class="footer-title">Sidor</h4>
+			<ul>
+				<li><a href="/tider">Tidsbokning</a></li>
+				<li><a href="/om">Om mig</a></li>
+				<li><a href="/metod">Arbetssätt och metod</a></li>
+				<li><a href="/personuppgifter">Intergritetspolicy</a></li>
+			</ul>
+		</div>
 	</footer>
 </html>
 <style is:global>
