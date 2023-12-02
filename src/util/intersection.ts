@@ -4,7 +4,7 @@ export default function () {
 
         // Customize the threshold here. For example, 0.5 means 50% overlap.
         const options = {
-            threshold: 0.4 // Adjust this value as needed
+            threshold: 0.2 // Adjust this value as needed
         };
 
         const observer = new IntersectionObserver((entries) => {
