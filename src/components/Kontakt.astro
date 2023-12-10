@@ -58,6 +58,9 @@
                     knappText.classList.remove("hidden");
                     knappLaddar.classList.add("hidden");
                     knappLaddar.classList.remove("visible");
+                    theForm.querySelectorAll("input").forEach((el) => {
+                        el.toggleAttribute("disabled");
+                    });
                 })
                 .catch((r) => {
                     console.warn("Failed!");
