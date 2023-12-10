@@ -12,6 +12,21 @@ module.exports = {
       fontFamily: {
         sans: ['Noto Sans', ...defaultTheme.fontFamily.sans],
         serif: ['Noto Serif', ...defaultTheme.fontFamily.serif]
+      },
+      colors: {
+        mint: {
+          50: '#f7f3f3',
+          100: '#dac9c8',
+          300: '#7ea6a9',
+          600: '#567e81',
+          900: '#090606',
+        },
+        sand: {
+          50: '#fbfcfd',
+          300: '#f0d39d',
+          600: '#ab905f',
+          900: '#0e1520',
+        }
       }
     },
   },

@@ -54,6 +54,10 @@
                     }
 
                     ruta.showModal();
+                    knappText.classList.add("visible");
+                    knappText.classList.remove("hidden");
+                    knappLaddar.classList.add("hidden");
+                    knappLaddar.classList.remove("visible");
                 })
                 .catch((r) => {
                     console.warn("Failed!");
@@ -64,13 +68,16 @@
         interceptForm();
     });
 </script>
-<section id="kontakt" class="w-full bg-base-100 min-h-[60svh]">
-    <dialog id="serverFeedback" class="modal bg-transparent">
+<section id="kontakt" class="w-full bg-mint-50 dark:bg-sand-900 min-h-[60svh]">
+    <dialog
+        id="serverFeedback"
+        class="modal bg-mint-600/90 dark:bg-sand-900/90"
+    >
         <div class="modal-box bg-transparent shadow-none border-none">
             <div
                 id="lyckades"
                 role="alert"
-                class="alert bg-primary text-base-100 border-none"
+                class="alert bg-mint-300 dark:bg-sand-300 text-mint-50 dark:text-sand-900 border-none"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +116,7 @@
                 <form method="dialog">
                     <!-- if there is a button in form, it will close the modal -->
                     <button
-                        class="btn btn-md text-sm btn-circle btn-primary text-base-100"
+                        class="btn btn-md text-sm btn-circle bg-mint-300 dark:bg-sand-300 text-mint-50 dark:text-sand-900"
                         >Ok</button
                     >
                 </form>
@@ -120,10 +127,14 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
                 <h3 class="text-3xl text-accent mb-12 font-serif">Kontakt</h3>
-                <p class="mb-6 text-primary text-xl max-w-[40ch]">
+                <p
+                    class="mb-6 text-mint-300 dark:text-sand-300 text-xl max-w-[40ch]"
+                >
                     Vill du veta mer om vad jag erbjuder eller boka en tid?
                 </p>
-                <p class="mb-6 text-primary text-xl max-w-[40ch]">
+                <p
+                    class="mb-6 text-mint-300 dark:text-sand-300 text-xl max-w-[40ch]"
+                >
                     Fyll i dina uppgifter så ringer jag upp dig så snart jag
                     kan, vanligen senast nästa vardag.
                 </p>
@@ -134,7 +145,9 @@
                 class="flex flex-col justify-evenly max-w-sm self-stretch gap-4 border border-primary rounded-xl p-4"
                 id="contactForm"
             >
-                <h4 class="text-lg text-primary">Ring upp mig</h4>
+                <h4 class="text-lg text-mint-300 dark:text-sand-300">
+                    Kontakta mig
+                </h4>
                 <div class="form-control">
                     <label class="label">Namn</label>
                     <input
@@ -176,7 +189,7 @@
                     >
                         <input
                             type="checkbox"
-                            class="checkbox checkbox-primary text-base-100"
+                            class="checkbox checkbox-primary text-mint-50 dark:text-sand-900"
                             required
                         />
                         <span class="label-text text-sm"
@@ -186,7 +199,7 @@
                     </label>
                 </div>
                 <div
-                    class="form-control text-primary text-xs underline hover:text-accent"
+                    class="form-control text-mint-300 dark:text-sand-300 text-xs underline hover:text-mint-600 dark:hover:text-sand-600"
                 >
                     <a href="/personuppgifter" target="_blank"
                         >Läs integritetspolicy</a
@@ -194,7 +207,7 @@
                 </div>
                 <div class="form-control grow">
                     <button
-                        class="btn btn-primary text-neutral-100 hover:btn-outline"
+                        class="btn text-mint-50 bg-mint-300 dark:bg-sand-600 dark:text-sand-900 hover:btn-outline"
                         type="submit"
                         id="skickaKnapp"
                         ><span id="skicka">Skicka</span>
