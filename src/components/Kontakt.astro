@@ -18,6 +18,16 @@
         const lyckades = document.getElementById("lyckades");
         const misslyckades = document.getElementById("misslyckades");
 
+        function toggleFormFrozen() {
+            knappText.classList.toggle("hidden");
+            knappText.classList.toggle("visible");
+            knappLaddar.classList.toggle("visible");
+            knappLaddar.classList.toggle("hidden");
+            theForm.querySelectorAll("input").forEach((el) => {
+                el.toggleAttribute("disabled");
+            });
+        }
+
         theForm.addEventListener("submit", (event) => {
             event.preventDefault();
 
@@ -32,13 +42,7 @@
                 }
             }
 
-            knappText.classList.toggle("hidden");
-            knappText.classList.toggle("visible");
-            knappLaddar.classList.toggle("visible");
-            knappLaddar.classList.toggle("hidden");
-            theForm.querySelectorAll("input").forEach((el) => {
-                el.toggleAttribute("disabled");
-            });
+            toggleFormFrozen();
 
             fetch(API_URL, {
                 headers: {
@@ -54,13 +58,7 @@
                     }
 
                     ruta.showModal();
-                    knappText.classList.toggle("hidden");
-                    knappText.classList.toggle("visible");
-                    knappLaddar.classList.toggle("visible");
-                    knappLaddar.classList.toggle("hidden");
-                    theForm.querySelectorAll("input").forEach((el) => {
-                        el.toggleAttribute("disabled");
-                    });
+                    toggleFormFrozen();
                 })
                 .catch((r) => {
                     console.warn("Failed!");
@@ -217,7 +215,7 @@
                         class="btn text-mint-50 bg-mint-300 dark:bg-sand-600 dark:text-sand-900 hover:btn-outline"
                         type="submit"
                         id="skickaKnapp"
-                        ><span id="skicka visible">Skicka</span>
+                        ><span id="skicka" class="visible">Skicka</span>
                         <span
                             id="laddar"
                             class="hidden loading loading-dots loading-sm"
