@@ -18,7 +18,7 @@
         const lyckades = document.getElementById("lyckades");
         const misslyckades = document.getElementById("misslyckades");
 
-        function toggleFormFrozen() {
+        const toggleFormFrozen = () => {
             knappText.classList.toggle("hidden");
             knappText.classList.toggle("visible");
             knappLaddar.classList.toggle("visible");
@@ -26,7 +26,7 @@
             theForm.querySelectorAll("input").forEach((el) => {
                 el.toggleAttribute("disabled");
             });
-        }
+        };
 
         theForm.addEventListener("submit", (event) => {
             event.preventDefault();
