@@ -14,21 +14,19 @@ const { title, description } = Astro.props;
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/ico" href="/favicon.ico" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@0;1&family=Noto+Serif:ital,wght@0,600;1,600&display=swap"
 			rel="stylesheet"
-		/>
+		/> -->
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} &ndash; leg psykolog Maria Andersson</title>
+		<title>leg psykolog Maria Andersson &ndash; {title}</title>
 	</head>
 	<body>
 		<slot />
 	</body>
-	<footer
-		class="footer bg-mint-600 min-h-[25vh] text-mint-50"
-	>
+	<footer class="footer bg-mint-600 min-h-[25vh] text-mint-50">
 		<aside class="py-24 px-12">
 			<h4 class="footer-title">Leg psykolog Maria Andersson</h4>
 			<ul>
