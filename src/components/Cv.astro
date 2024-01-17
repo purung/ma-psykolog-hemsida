@@ -17,10 +17,56 @@
                 </p>
             </h2>
             <div class="mx-auto lg:w-4/5">
-                <img
-                    src="/placeholder.png"
-                    class="rounded-2xl shadow-lg reveal"
-                />
+                <picture>
+                    <!-- WebP images for different resolutions -->
+                    <source
+                        srcset="portrait/maria-andersson-400.webp 400w, 
+                 portrait/maria-andersson-500.webp 500w, 
+                 portrait/maria-andersson-600.webp 600w, 
+                 portrait/maria-andersson-700.webp 700w,
+                 portrait/maria-andersson-800.webp 800w"
+                        sizes="(max-width: 399px) 400px,
+                 (min-width: 400px) and (max-width: 499px) 500px,
+                 (min-width: 500px) and (max-width: 599px) 600px,
+                 (min-width: 600px) and (max-width: 699px) 700px,
+                 (min-width: 700px) and (max-width: 767px) 800px,
+                 (min-width: 768px) and (max-width: 820px) 500px,
+                 (min-width: 821px) and (max-width: 970px) 600px,
+                 (min-width: 971px) and (max-width: 1022px) 700px,
+                 (min-width: 1023px) and (max-width: 1485px) 400px,
+                 (min-width: 1618px) and (max-width: 2015px) 500px,
+                 (min-width: 2016px) and (max-width: 2381px) 600px,
+                 (min-width: 2382px) 800px"
+                        type="image/webp"
+                    />
+
+                    <!-- PNG fallback images for different resolutions -->
+                    <source
+                        srcset="portrait/maria-andersson-400.png 400w, 
+                  portrait/maria-andersson-500.png 500w, 
+                  portrait/maria-andersson-600.png 600w, 
+                  portrait/maria-andersson-700.png 700w,
+                  portrait/maria-andersson-800.png 800w"
+                        sizes="(max-width: 399px) 400px,
+                 (min-width: 400px) and (max-width: 499px) 500px,
+                 (min-width: 500px) and (max-width: 599px) 600px,
+                 (min-width: 600px) and (max-width: 699px) 700px,
+                 (min-width: 700px) and (max-width: 767px) 800px,
+                 (min-width: 768px) and (max-width: 820px) 500px,
+                 (min-width: 821px) and (max-width: 970px) 600px,
+                 (min-width: 971px) and (max-width: 1022px) 700px,
+                 (min-width: 1023px) and (max-width: 1485px) 400px,
+                (min-width: 1618px) and (max-width: 2015px) 500px,
+                (min-width: 2016px) and (max-width: 2381px) 600px,
+                (min-width: 2382px) 800px"
+                        type="image/png"
+                    />
+                    <img
+                        src="portrait/maria-andersson-700.png"
+                        alt="Porträttbild av psykolog Maria Andersson"
+                        class="rounded-2xl shadow-lg reveal"
+                    /></picture
+                >
             </div>
             <ul
                 class="text-mint-900 dark:text-sand-300 text-lg flex flex-col justify-evenly list-disc grow px-4 max-w-[50ch]"
