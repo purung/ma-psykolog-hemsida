@@ -1,231 +1,27 @@
 ---
-
 ---
 
-<script>
-    const API_URL = import.meta.env.DEV
-        ? "http://localhost:3000/api/boka"
-        : "https://birds-psy.fly.dev/api/boka";
-    function interceptForm() {
-        const theForm = document.getElementById(
-            "contactForm",
-        ) as HTMLFormElement;
-        const knappText = document.getElementById("skicka");
-        const knappLaddar = document.getElementById("laddar");
-        const ruta = document.getElementById(
-            "serverFeedback",
-        ) as HTMLDialogElement;
-        const lyckades = document.getElementById("lyckades");
-        const misslyckades = document.getElementById("misslyckades");
-
-        function toggleFormFrozen() {
-            knappText.classList.toggle("hidden");
-            knappText.classList.toggle("visible");
-            knappLaddar.classList.toggle("visible");
-            knappLaddar.classList.toggle("hidden");
-            theForm.querySelectorAll("input").forEach((el) => {
-                el.toggleAttribute("disabled");
-            });
-        }
-
-        theForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-
-            const data = new FormData(theForm);
-            const urlEncodedData = new URLSearchParams();
-
-            for (const [key, value] of data) {
-                if (typeof value === "string") {
-                    urlEncodedData.append(key, value);
-                } else {
-                    console.log("A wild file appeared");
-                }
-            }
-
-            toggleFormFrozen();
-
-            fetch(API_URL, {
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                method: "POST",
-                body: urlEncodedData,
-            })
-                .then((r) => {
-                    if (!r.ok) {
-                        lyckades.classList.add("hidden");
-                        misslyckades.classList.remove("hidden");
-                    }
-
-                    ruta.showModal();
-                    toggleFormFrozen();
-                })
-                .catch((r) => {
-                    console.warn("Failed!");
-                });
-        });
-    }
-    document.addEventListener("DOMContentLoaded", () => {
-        interceptForm();
-    });
-</script>
 <section id="kontakt" class="w-full bg-mint-50 dark:bg-sand-900 min-h-[60svh]">
-    <dialog
-        id="serverFeedback"
-        class="modal bg-mint-600/90 dark:bg-sand-900/70"
-    >
-        <div class="modal-box bg-transparent shadow-none border-none">
-            <div
-                id="lyckades"
-                role="alert"
-                class="alert bg-mint-300 dark:bg-sand-300 text-mint-50 dark:text-sand-900 border-none"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="stroke-current shrink-0 h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    ><path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path></svg
-                >
-                <span>Du kommer att bli uppringd så snart som möjligt.</span>
-            </div>
-            <div
-                id="misslyckades"
-                role="alert"
-                class="hidden alert alert-error"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="stroke-current shrink-0 h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    ><path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path></svg
-                >
-                <span>Någonting har gått fel. Var god försök igen.</span>
-            </div>
-            <div class="modal-action">
-                <form method="dialog">
-                    <!-- if there is a button in form, it will close the modal -->
-                    <button
-                        class="btn btn-md text-sm btn-circle bg-mint-300 dark:bg-sand-300 text-mint-50 dark:text-sand-900"
-                        >Ok</button
-                    >
-                </form>
-            </div>
-        </div>
-    </dialog>
     <div class="w-full md:w-2/3 lg:w-8/10 lg:h-6/8 px-6 py-12 mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-                <h3
-                    class="text-3xl text-mint-600 dark:text-sand-600 mb-12 font-serif"
-                >
+                <h3 class="text-3xl text-mint-600 dark:text-sand-600 mb-12 font-serif">
                     Kontakt
                 </h3>
-                <p
-                    class="mb-6 text-mint-600 dark:text-sand-300 text-xl max-w-[40ch]"
-                >
+                <p class="mb-6 text-mint-600 dark:text-sand-300 text-xl max-w-[40ch]">
                     Vill du veta mer om vad jag erbjuder eller boka en tid?
                 </p>
-                <p
-                    class="mb-6 text-mint-600 dark:text-sand-300 text-xl max-w-[40ch]"
-                >
-                    Fyll i dina uppgifter så ringer jag upp dig så snart jag
-                    kan, vanligen senast nästa vardag.
+                <p class="mb-6 text-mint-600 dark:text-sand-300 text-xl max-w-[40ch]">
+                    Skicka mig ett mejl så svarar jag så snart jag kan, vanligen
+                    senast nästa vardag.
                 </p>
-            </div>
-            <form
-                action="https://birds-psy.fly.dev/api/boka"
-                method="post"
-                class="flex flex-col justify-evenly max-w-sm self-stretch gap-4 border border-mint-300 dark:border-sand-300 rounded-xl p-4"
-                id="contactForm"
-            >
-                <h4 class="text-lg text-mint-600 dark:text-sand-300">
-                    Kontakta mig
-                </h4>
-                <div class="form-control">
-                    <label class="label" for="name">Namn</label>
-                    <input
-                        name="name"
-                        id="name"
-                        inputmode="text"
-                        autocapitalize="words"
-                        autocomplete="name"
-                        required
-                        class="input input-bordered input-primary w-full"
-                    />
-                </div>
-                <div class="form-control">
-                    <label class="label" for="tel">Telefonnummer</label>
-                    <input
-                        name="tel"
-                        id="tel"
-                        inputmode="tel"
-                        autocomplete="tel"
-                        required
-                        class="input input-bordered input-primary w-full"
-                    />
-                </div>
-                <div class="form-control">
-                    <label class="label" for="special">Önskemål</label>
-                    <input
-                        name="special"
-                        id="special"
-                        inputmode="text"
-                        autocapitalize="words"
-                        autocomplete="name"
-                        class="input input-bordered input-primary w-full"
-                    />
-                    <label class="label text-alt text-xs"
-                        >Här kan du skriva om det finns någon särskild tid som
-                        du inte kan svara i telefon</label
-                    >
-                </div>
-                <div class="form-control">
-                    <label
-                        class="label cursor-pointer flex justify-start gap-4 content-center"
-                    >
-                        <input
-                            type="checkbox"
-                            class="checkbox checkbox-primary text-mint-50 dark:text-sand-900"
-                            required
-                        />
-                        <span class="label-text text-sm"
-                            >Jag godkänner att dessa uppgifter hanteras enligt
-                            min integritetspolicy</span
-                        >
-                    </label>
-                </div>
-                <div
-                    class="form-control text-mint-300 dark:text-sand-300 text-xs underline hover:text-mint-600 dark:hover:text-sand-600"
+                <a
+                    href="mailto:maria@psykologandersson.se"
+                    class="btn mx-auto my-8 text-mint-50 bg-mint-600 dark:bg-sand-600 dark:text-sand-900 btn-outline hover:bg-mint-300 dark:hover:bg-sand-300"
                 >
-                    <a href="/personuppgifter" target="_blank"
-                        >Läs integritetspolicy</a
-                    >
-                </div>
-                <div class="form-control grow">
-                    <button
-                        class="btn text-mint-50 bg-mint-600 dark:bg-sand-600 dark:text-sand-900 btn-outline hover:bg-mint-300 dark:hover:bg-sand-300"
-                        type="submit"
-                        id="skickaKnapp"
-                        ><span id="skicka" class="visible">Skicka</span>
-                        <span
-                            id="laddar"
-                            class="hidden loading loading-dots loading-sm"
-                        ></span>
-                    </button>
-                </div>
-            </form>
+                    maria@psykologandersson.se
+                </a>
+            </div>
         </div>
     </div>
 </section>
